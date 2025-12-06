@@ -110,11 +110,7 @@ export const HeroHeader = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
                   asChild
                   size="sm"
                   className={cn(isScrolled ? "lg:inline-flex" : "hidden")}
-                >
-                  <Link href="#">
-                    <span>Get Started</span>
-                  </Link>
-                </Button>
+                ></Button>
               </div>
             </div>
           </div>
