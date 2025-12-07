@@ -12,7 +12,7 @@ export default function HeroSection() {
             <div className="relative z-10 mx-auto w-full max-w-5xl px-6">
               <div className="md:w-1/2">
                 <div>
-                  <h1 className="max-w-md text-balance text-5xl font-medium md:text-6xl text-black dark:text-white">
+                  <h1 className="max-w-md text-balance text-5xl font-medium md:text-6xl text-black ">
                     Vind toffe blog ideeën met voor leuke gelegenheden
                   </h1>
                   <p className="text-muted-foreground my-8 max-w-2xl text-balance text-xl">
@@ -21,12 +21,7 @@ export default function HeroSection() {
                   </p>
 
                   <div className="flex items-center gap-3">
-                    <Button asChild size="lg" className="pr-4.5">
-                      <Link href="#link">
-                        <span className="text-nowrap">Bekijk onze blogs</span>
-                        <ChevronRight className="opacity-50" />
-                      </Link>
-                    </Button>
+                    <Button asChild size="lg" className="pr-4.5"></Button>
                     <Button
                       key={2}
                       asChild
@@ -34,9 +29,9 @@ export default function HeroSection() {
                       variant="outline"
                       className="pl-5"
                     >
-                      <Link href="#link">
+                      <Link href="/blog">
                         <CirclePlay className="fill-primary/25 stroke-primary" />
-                        <span className="text-nowrap">Watch video</span>
+                        <span className="text-nowrap">Bekijk onze blogs</span>
                       </Link>
                     </Button>
                   </div>
@@ -79,13 +74,17 @@ export default function HeroSection() {
 
             <div className="perspective-near mt-24 translate-x-12 md:absolute md:-right-6 md:bottom-16 md:left-1/2 md:top-40 md:mt-0 md:translate-x-0">
               <div className="before:border-foreground/5 before:bg-foreground/5 relative h-full before:absolute before:-inset-x-4 before:bottom-7 before:top-0 before:skew-x-6 before:rounded-[calc(var(--radius)+1rem)] before:border">
-                <div className="bg-background rounded-(--radius) shadow-foreground/10 ring-foreground/5 relative h-full -translate-y-12 skew-x-6 overflow-hidden border border-transparent shadow-md ring-1">
+                <div
+                  className="bg-background rounded-(--radius) shadow-foreground/10 ring-foreground/5 
+  relative h-full -translate-y-12 skew-x-6 overflow-hidden border border-transparent shadow-md ring-1 
+  max-w-[580px]"
+                >
                   <Image
-                    src="/mist/tailark.png"
-                    alt="app screen"
-                    width="2880"
-                    height="1842"
-                    className="object-top-left size-full object-cover"
+                    src="/images/red-gift-box.png"
+                    alt="Hero Image"
+                    width="880"
+                    height="842"
+                    className="h-auto w-full object-cover"
                   />
                 </div>
               </div>

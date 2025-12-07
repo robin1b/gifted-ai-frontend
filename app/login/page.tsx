@@ -48,7 +48,7 @@ export default function LoginPage() {
           <Link href="/" aria-label="go home">
             {/* Gebruik je eigen logo of laat de LogoIcon staan als die in je project zit */}
           </Link>
-          <h1 className="mt-6 text-balance text-xl font-semibold text-black dark:text-white">
+          <h1 className="mt-6 text-balance text-xl font-semibold text-black ">
             <span className="text-muted-foreground">Welkom terug!</span> Meld je
             aan om verder te gaan
           </h1>

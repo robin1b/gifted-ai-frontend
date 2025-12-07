@@ -3,6 +3,7 @@ import { Schibsted_Grotesk, Martian_Mono } from "next/font/google";
 import "./globals.css";
 import { HeroHeader } from "@/components/header";
 import HeaderWrapper from "@/components/HeaderWrapper";
+import FooterSection from "@/components/footer-four";
 
 const schibstedGrotesk = Schibsted_Grotesk({
   variable: "--font-schibsted-grotesk",
@@ -31,6 +32,7 @@ export default function RootLayout({
       >
         <HeaderWrapper />
         {children}
+        <FooterSection />
       </body>
     </html>
   );
