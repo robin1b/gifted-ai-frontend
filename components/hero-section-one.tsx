@@ -21,7 +21,14 @@ export default function HeroSection() {
                   </p>
 
                   <div className="flex items-center gap-3">
-                    <Button asChild size="lg" className="pr-4.5"></Button>
+                    {/* Eerste button */}
+                    <Button asChild size="lg" className="pr-4.5">
+                      <Link href="https://powderblue-turtle-512586.hostingersite.com/docs/api#/">
+                        <span className="text-nowrap">API Documentatie</span>
+                      </Link>
+                    </Button>
+
+                    {/* Tweede button */}
                     <Button
                       key={2}
                       asChild
@@ -32,7 +39,7 @@ export default function HeroSection() {
                       <Link href="/blog">
                         <CirclePlay className="fill-primary/25 stroke-primary" />
                         <span className="text-nowrap">Bekijk onze blogs</span>
-                      </Link>{" "}
+                      </Link>
                     </Button>
                   </div>
                 </div>
