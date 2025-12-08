@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export const revalidate = 60; // 5 min caching (ISR)
+export const revalidate = 60; // 1 min caching (ISR)
 
 async function getPublicPosts() {
   const res = await fetch(
@@ -36,7 +36,7 @@ export default async function BlogPage() {
             {post.image ? (
               <div className="relative w-full h-48">
                 <Image
-                  src={post.image}
+                  src="/images/red-gift-box.png"
                   alt={post.title}
                   fill
                   className="object-cover"
@@ -44,8 +44,13 @@ export default async function BlogPage() {
                 />
               </div>
             ) : (
-              <div className="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-500">
-                Geen afbeelding
+              <div className="relative w-full h-48">
+                <Image
+                  src="/images/red-gift-box.png" // ← jouw fallback image
+                  alt="Fallback afbeelding"
+                  fill
+                  className="object-contain opacity-80 "
+                />
               </div>
             )}
 
