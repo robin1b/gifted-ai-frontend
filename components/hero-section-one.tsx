@@ -32,6 +32,9 @@ export default function HeroSection() {
                       <Link href="/blog">
                         <CirclePlay className="fill-primary/25 stroke-primary" />
                         <span className="text-nowrap">Bekijk onze blogs</span>
+                      </Link>{" "}
+                      <Link href="https://powderblue-turtle-512586.hostingersite.com/docs/api#/">
+                        <span className="text-nowrap">api docs</span>
                       </Link>
                     </Button>
                   </div>
