@@ -1,3 +1,4 @@
+"use client";
 import type { Post } from "./page";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -17,17 +18,19 @@ export default function Articles({ posts }: { posts: Post[] }) {
       </div>
     );
   }
-  function excerpt(text: string, wordCount: number = 20) {
+
+  function excerpt(text: string, wordCount = 20) {
     const words = text.split(" ");
     if (words.length <= wordCount) return text;
     return words.slice(0, wordCount).join(" ") + "...";
   }
+
   return (
     <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full">
       {posts.map((post) => (
-        <Link
-          href={`/dashboard/${post.id}`}
+        <div
           key={post.id}
+          onClick={() => (window.location.href = `/dashboard/${post.id}`)}
           className="
             border border-border 
             rounded-xl 
@@ -37,6 +40,7 @@ export default function Articles({ posts }: { posts: Post[] }) {
             hover:shadow-md 
             transition-shadow 
             flex flex-col justify-between
+            cursor-pointer
           "
         >
           <div>
@@ -45,14 +49,26 @@ export default function Articles({ posts }: { posts: Post[] }) {
             </h2>
 
             <p className="text-muted-foreground mb-4 leading-relaxed">
-              {excerpt(post.content, 20)}
+              {excerpt(post.content)}
             </p>
           </div>
 
-          <footer className="text-sm text-muted-foreground">
-            Door: {post.author.name}
+          <footer className="mt-4 flex items-center justify-between">
+            <span className="text-sm text-muted-foreground">
+              Door: {post.author.name}
+            </span>
+
+            {/* EDIT BUTTON */}
+            <Button
+              asChild
+              size="sm"
+              className="bg-blue-600 text-black hover:bg-blue-700"
+              onClick={(e) => e.stopPropagation()} // <- BELANGRIJK
+            >
+              <Link href={`/dashboard/${post.id}/edit`}>Edit</Link>
+            </Button>
           </footer>
-        </Link>
+        </div>
       ))}
     </div>
   );

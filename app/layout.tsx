@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Schibsted_Grotesk, Martian_Mono } from "next/font/google";
 import "./globals.css";
 import { HeroHeader } from "@/components/header";
-import HeaderWrapper from "@/components/HeaderWrapper";
 import FooterSection from "@/components/footer-four";
+import { cookies } from "next/headers";
 
 const schibstedGrotesk = Schibsted_Grotesk({
   variable: "--font-schibsted-grotesk",
@@ -20,18 +20,25 @@ export const metadata: Metadata = {
   description: "Find the best gifts for your loved ones with our site",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // 🔥 READ TOKEN FROM HTTP-ONLY COOKIE (server-side)
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token");
+  const isLoggedIn = Boolean(token);
+
   return (
     <html lang="en">
       <body
         className={`${schibstedGrotesk.variable} ${martianMono.variable} min-h-screen antialiased`}
       >
-        <HeaderWrapper />
+        <HeroHeader isLoggedIn={isLoggedIn} />
+
         {children}
+
         <FooterSection />
       </body>
     </html>

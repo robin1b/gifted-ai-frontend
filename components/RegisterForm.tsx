@@ -79,9 +79,6 @@ export default function RegisterForm() {
         className="max-w-92 m-auto h-fit w-full space-y-6"
       >
         <div>
-          <Link href="/" aria-label="go home">
-            <span className="text-2xl font-bold">MijnLogo</span>
-          </Link>
           <h1 className="mt-6 text-balance text-xl font-semibold">
             <span className="text-muted-foreground">Welkom!</span> Maak een
             account aan om verder te gaan
@@ -153,7 +150,11 @@ export default function RegisterForm() {
           </div>
         )}
 
-        <Button type="submit" className="w-full" disabled={loading}>
+        <Button
+          type="submit"
+          className="w-full cursor-pointer bg-blue-500 text-white hover:bg-blue-700"
+          disabled={loading}
+        >
           {loading ? "Bezig…" : "Account aanmaken"}
         </Button>
 

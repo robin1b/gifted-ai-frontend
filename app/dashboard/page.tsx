@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import Articles from "./articles";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 interface Author {
   id: string;
@@ -39,6 +40,16 @@ export default async function DashboardPage() {
         <p className="text-red-600 text-lg mb-4">
           Kon de artikelen niet laden.
         </p>
+        <form action="/api/logout" method="post">
+          <Button
+            type="submit"
+            size="sm"
+            variant="destructive"
+            className="font-semibold shadow-sm hover:opacity-90"
+          >
+            Log out
+          </Button>
+        </form>
 
         <Link
           href="/create"
@@ -52,6 +63,32 @@ export default async function DashboardPage() {
   const { data } = (await res.json()) as { data: Post[] };
   return (
     <div className="pt-36 px-6">
+      <form action="/api/logout" method="post">
+        <Button
+          type="submit"
+          size="sm"
+          variant="ghost"
+          className="
+    text-red-600 
+    hover:bg-red-50 
+    font-semibold
+    cursor-pointer
+    px-3 py-1.5
+    focus-visible:ring-0 
+    focus-visible:outline-none
+    mb-6
+  "
+        >
+          Log out
+        </Button>
+        <Button
+          asChild
+          className="bg-blue-600 text-white hover:bg-blue-700 ml-4"
+        >
+          <Link href="/dashboard/create"> Nieuwe Post</Link>
+        </Button>
+      </form>
+
       <Articles posts={data} />
     </div>
   );
