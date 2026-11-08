@@ -1,37 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GiftedAI – frontend
 
-## Getting Started
+Next.js-frontend van GiftedAI, een blogplatform rond cadeau-ideeën. Gebruikers maken een account aan en beheren hun eigen blogposts; bezoekers lezen de publieke blog. Gebouwd in december 2025 als frontend bij de Laravel-API in [giftedai-backend](https://github.com/robin1b/giftedai-backend).
 
-First, run the development server:
+*English: Next.js frontend for GiftedAI (December 2025): auth, a dashboard to manage blog posts and a public blog, backed by the giftedai-backend Laravel API.*
 
+## Wat erin zit
+- Registreren en inloggen tegen de Laravel-API; het Sanctum-token wordt in een httpOnly-cookie bewaard
+- Next.js API-routes (`app/api/*`) als tussenlaag, zodat de browser het token nooit rechtstreeks ziet
+- `proxy.ts` schermt `/dashboard` af voor niet-ingelogde gebruikers en stuurt onbekende routes door
+- Dashboard: eigen posts bekijken, aanmaken (titel, inhoud, optionele afbeelding) en verwijderen; er is een bewerkformulier, maar de route `app/api/posts/[id]` stuurt nog enkel verwijderverzoeken door, dus opslaan na bewerken werkt niet
+- Publieke blog met overzicht en detailpagina, inclusief Open Graph- en Twitter-metadata per post
+- UI met Tailwind CSS 4 en shadcn/ui-componenten (Radix, lucide-react)
+
+## Techniek
+Next.js 16 (App Router, canary), React 19, TypeScript, Tailwind CSS 4, shadcn/ui.
+
+## Lokaal draaien
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+Open http://localhost:3000. De URL van de backend staat momenteel rechtstreeks in de API-routes en pagina's (Hostinger-omgeving); er is geen `.env` nodig.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Status
+Prototype, december 2025.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# gifted-ai-frontend
+---
+_Nagekeken in november 2026 door Robin, met hulp van een AI-agent._
